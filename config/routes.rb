@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'tasks#index'
   # create
   get 'tasks/new', to: 'tasks#new', as: :new_task
+  post 'tasks', to: 'tasks#create'
   # read one
   get 'tasks/:id', to: 'tasks#show', as: :task
 end
