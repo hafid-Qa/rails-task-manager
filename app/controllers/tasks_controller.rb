@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show update]
+  before_action :set_task, only: %i[show update edit]
   def index
     @tasks = Task.all
   end
@@ -18,7 +18,14 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  # edit task
   def edit; end
+
+  def update
+    @task.update(task_params)
+    redirect_to root_path(@task)
+  end
+  # edit task
 
   private
 
