@@ -4,7 +4,7 @@
     <% @tasks.each do |task| %>
       <li class="list-group-item">
         <input class="form-check-input me-1" type="checkbox" value="" id="<%= task.id %>">
-        <label class="form-check-label" for="<%= task.id %>"><%= link_to task.title, task_path(task) %></label>
+        <label class="form-check-label" for="<%= task.id %>"><%= link_to task.title, task_path(task), class: "restaurant-link" %></label>
       </li>
     <% end %>
   </ul>
