@@ -18,6 +18,8 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  def edit; end
+
   private
 
   def set_task
