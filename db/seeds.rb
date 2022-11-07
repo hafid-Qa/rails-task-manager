@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+puts 'start creating'
+10.times do
+  Task.create!(title: Faker::Restaurant.name, details: Faker::JapaneseMedia::OnePiece.sea)
+end
+
+puts 'completed'
