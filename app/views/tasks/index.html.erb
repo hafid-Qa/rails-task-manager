@@ -1,1 +1,11 @@
-
+<div class="h-100 p-3 bg-light border rounded-3 my-3 shadow">
+  <h1>My Task</h1>
+  <ul class="list-group">
+    <% @tasks.each do |task| %>
+      <li class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" id="<%= task.id %>">
+        <label class="form-check-label" for="<%= task.id %>"><%= task.title %></label>
+      </li>
+    <% end %>
+  </ul>
+</div>
