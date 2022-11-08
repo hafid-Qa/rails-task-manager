@@ -2,8 +2,6 @@
 
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show update edit]
-  validates :title, presence: true
-  validates :details, presence: true
 
   def index
     @tasks = Task.all
@@ -18,11 +16,14 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.save
-    redirect_to root_path
+    if @task.save
+      redirect_to task_path(@task)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
-
   # create
+
   # edit task
   def edit; end
 
