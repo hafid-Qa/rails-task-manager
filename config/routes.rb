@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   # read all
   root 'tasks#index'
+  # get '/tasks', to: 'task#index', as: :tasks
   # create
   get 'tasks/new', to: 'tasks#new', as: :new_task
   post 'tasks', to: 'tasks#create'

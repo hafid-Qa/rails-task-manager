@@ -2,12 +2,16 @@
 
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show update edit]
+  validates :title, presence: true
+  validates :details, presence: true
+
   def index
     @tasks = Task.all
   end
 
   def show; end
 
+  # create
   def new
     @task = Task.new
   end
@@ -18,6 +22,7 @@ class TasksController < ApplicationController
     redirect_to root_path
   end
 
+  # create
   # edit task
   def edit; end
 
@@ -34,7 +39,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :details)
+    params.require(:task).permit(:title, :details, :completed)
   end
   # end of class TasksController
 end

@@ -2,6 +2,11 @@
   <div class= "flex-grow-1">
     <h2><%=  @task.title %></h2>
     <p>Details: <%= @task.details %></p>
+    <% if @task.completed %>
+      <p><input class="form-check-input me-1" type="checkbox" value="" id="" checked="true"> this task is completed </p>
+    <% else %>
+      <p><input class="form-check-input me-1" type="checkbox" value="" id="" > this task is completed </p>
+    <% end %>
   </div >
   <div style= "width:200px" class="d-flex justify-content-around align-items-center">
     <%= link_to "Edit", edit_task_path(@task), class: "btn btn-success" %>
