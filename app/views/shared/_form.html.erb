@@ -1,3 +1,8 @@
+<% if @task.errors.any? %>
+  <% @task.errors.full_messages.each do |message| %>
+    <p class='text-danger'><%= message %></p>
+  <% end %>
+<% end %>
 <%= form_for @task do |f| %>
   <div class="mb-3">
     <%= f.label :title, class:"form-label" %>
