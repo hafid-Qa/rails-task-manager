@@ -7,11 +7,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
+puts 'cleaning out the database...'
+Task.destroy_all
 
 puts 'start creating'
 10.times do
   Task.create!(title: Faker::Restaurant.name, details: Faker::JapaneseMedia::OnePiece.sea)
 end
 
-puts 'completed'
+puts "..crated #{Task.count} tasks"
