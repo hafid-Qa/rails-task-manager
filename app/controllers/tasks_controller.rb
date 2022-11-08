@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  # before_action :set_task, only: %i[show update edit]
+  before_action :set_task, only: %i[show update edit destroy]
 
   def index
     @tasks = Task.all
   end
 
-  def show
-    @task = Task.find(params[:id])
-  end
+  def show; end
 
   # create
   def new
@@ -24,25 +22,27 @@ class TasksController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  # create
 
+  # create
   # edit task
-  def edit
-    @task = Task.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @task = Task.find(params[:id])
     @task.update(task_params)
     redirect_to root_path(@task)
   end
   # edit task
 
+  def destroy
+    @task.destroy
+    redirect_to root_path, status: :see_other
+  end
+
   private
 
-  # def set_task
-  #   @task = Task.find(params[:id])
-  # end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   def task_params
     params.require(:task).permit(:title, :details, :completed)
