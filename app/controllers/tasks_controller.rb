@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show update edit]
+  # before_action :set_task, only: %i[show update edit]
 
   def index
     @tasks = Task.all
   end
 
-  def show; end
+  def show
+    @task = Task.find(params[:id])
+  end
 
   # create
   def new
@@ -25,9 +27,12 @@ class TasksController < ApplicationController
   # create
 
   # edit task
-  def edit; end
+  def edit
+    @task = Task.find(params[:id])
+  end
 
   def update
+    @task = Task.find(params[:id])
     @task.update(task_params)
     redirect_to root_path(@task)
   end
@@ -35,9 +40,9 @@ class TasksController < ApplicationController
 
   private
 
-  def set_task
-    @task = Task.find(params[:id])
-  end
+  # def set_task
+  #   @task = Task.find(params[:id])
+  # end
 
   def task_params
     params.require(:task).permit(:title, :details, :completed)
