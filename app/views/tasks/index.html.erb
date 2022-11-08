@@ -3,8 +3,10 @@
   <ul class="list-group">
     <% @tasks.each do |task| %>
       <li class="list-group-item d-flex justify-content-start pe-1">
-        <input class="form-check-input me-1" type="checkbox" value="" id="<%= task.id %>">
-        <label class="form-check-label flex-grow-1" for="<%= task.id %>"><%= link_to task.title, task_path(task), class: "restaurant-link" %></label>
+        <%= form_for(task) do |f| %>
+          <%= f.check_box :completed , class:"form-check-input me-1"%>
+        <% end %>
+        <%= link_to task.title, task_path(task), class: "restaurant-link flex-grow-1" %>
         <%= link_to "Edit", edit_task_path(task), class: "btn btn-outline-success btn-sm me-2" %>
         <%= button_to 'Delete', task, method: :delete,data: { turbo_confirm: 'Are you sure?' } , class: "btn btn-outline-danger btn-sm "%>
       </li>

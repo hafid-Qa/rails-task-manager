@@ -2,10 +2,9 @@
   <div class= "flex-grow-1">
     <h2><%=  @task.title %></h2>
     <p>Details: <%= @task.details %></p>
-    <% if @task.completed %>
-      <p><input class="form-check-input me-1" type="checkbox" value="" id="" checked="true"> this task is completed </p>
-    <% else %>
-      <p><input class="form-check-input me-1" type="checkbox" value="" id="" > this task is completed </p>
+    <%= form_for(@task) do |f| %>
+      <%= f.check_box :completed , class:"form-check-input me-1"%>
+      <%= f.label :completed, class:"form-check-label" %>
     <% end %>
   </div >
   <div style= "width:200px" class="d-flex justify-content-around align-items-center">
