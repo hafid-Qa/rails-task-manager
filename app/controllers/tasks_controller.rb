@@ -39,6 +39,13 @@ class TasksController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def toggle
+    @task = Task.find(params[:id])
+    @task.update(completed: params[:completed])
+
+    render json: { message: 'Success' }
+  end
+
   private
 
   def set_task

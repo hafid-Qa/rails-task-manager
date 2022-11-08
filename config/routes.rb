@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   # patch 'tasks/:id', to: 'tasks#update'
   # # destroy
   # delete 'tasks/:id', to: 'tasks#destroy'
+   post "tasks/:id/toggle", to: "tasks#toggle"
 end
